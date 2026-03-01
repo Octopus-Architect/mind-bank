@@ -1,7 +1,33 @@
-<!DOCTYPE html><html><body style="background:#000; color:#0f0; padding:20px; font-family:monospace;"><h1>MIND BANK - FILE MANAGER</h1><hr><ul style="list-style:none; text-align:left;">
-<li><a href="index.html" style="color:#0f0; text-decoration:none;">> index.html</a></li>
-<li><a href="README-cloudshell.txt" style="color:#0f0; text-decoration:none;">> README-cloudshell.txt</a></li>
-<li><a href="README.md" style="color:#0f0; text-decoration:none;">> README.md</a></li>
-<li><a href="run.sh" style="color:#0f0; text-decoration:none;">> run.sh</a></li>
-<li><a href="server.py" style="color:#0f0; text-decoration:none;">> server.py</a></li>
-</ul></body></html>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIND BANK - الأخطبوط 🐙</title>
+    <style>
+        body { background: #0a0a0a; color: #00ffcc; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; }
+        .container { padding: 20px; border: 2px solid #00ffcc; border-radius: 20px; margin: 10px; box-shadow: 0 0 15px #00ffcc; }
+        input, button { width: 90%; padding: 12px; margin: 8px 0; border-radius: 8px; border: none; }
+        input { background: #222; color: #fff; border: 1px solid #444; }
+        button { background: #00ffcc; color: #000; font-weight: bold; cursor: pointer; }
+        .ip-box { font-size: 14px; color: #ffcc00; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>MIND BANK 🏦</h1>
+        <h3>تسجيل الموظف / الطالب</h3>
+        <p>يرجى إدخال البيانات للربط مع الإدارة</p>
+        
+        <input type="text" id="name" placeholder="الاسم بالكامل">
+        <input type="tel" id="phone" placeholder="رقم الموبايل المعتمد">
+        <input type="file" id="photo" accept="image/*">
+        
+        <div class="ip-box">
+            جاري فحص الـ IP والـ SIM... 📡
+        </div>
+        
+        <button onclick="alert('جاري توليد كود الربط الموحد...')">تفعيل الأخطبوط 🔗</button>
+    </div>
+</body>
+</html>
