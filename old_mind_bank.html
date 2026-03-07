@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIND BANK - Global Hub</title>
+    <style>
+        body { background-color: #fdfdfa; color: #000; font-family: 'Times New Roman', serif; margin: 0; padding: 10px; overflow-x: hidden; }
+        .brand-header { text-align: center; margin-top: 5px; position: relative; }
+        h1 { color: #8a6d3b; font-size: 34px; margin: 0; font-weight: bold; letter-spacing: 2px; }
+        
+        /* قائمة اللغات الصغيرة اللي عجبتك */
+        .lang-selector { position: absolute; top: 42px; right: 10px; z-index: 10; }
+        .lang-mini { font-size: 11px; color: #8a6d3b; border: 1.5px solid #d4af37; background: #fff; border-radius: 8px; padding: 3px 8px; font-weight: bold; cursor: pointer; }
+
+        .orbit-system { position: relative; width: 360px; height: 360px; margin: 0 auto; display: flex; align-items: center; justify-content: center; }
+        .radar-core { width: 195px; height: 195px; background: radial-gradient(circle, #002200 0%, #000 100%); border-radius: 50%; border: 4px solid #39ff14; position: relative; box-shadow: 0 0 30px rgba(57, 255, 20, 0.5); overflow: hidden; z-index: 2; }
+        .radar-sweep { position: absolute; width: 100%; height: 100%; border-radius: 50%; background: conic-gradient(from 0deg, transparent 60%, rgba(57, 255, 20, 0.6) 100%); animation: scan 2.5s linear infinite; }
+        .radar-grid { position: absolute; width: 100%; height: 100%; background-image: linear-gradient(rgba(57,255,20,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(57,255,20,0.15) 1px, transparent 1px); background-size: 25px 25px; }
+        .radar-text { position: absolute; width: 100%; top: 75%; text-align: center; color: #39ff14; font-size: 10px; font-family: monospace; letter-spacing: 1px; }
+        @keyframes scan { 100% { transform: rotate(360deg); } }
+
+        .floating-icon { position: absolute; width: 46px; height: 46px; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.2)); z-index: 3; transition: 0.3s; }
+        
+        /* توزيع الأيقونات والأدوات */
+        .ic-1 { top: 0px; left: 50%; transform: translateX(-50%); } /* FB */
+        .ic-2 { top: 45px; right: 45px; } /* YT */
+        .ic-3 { top: 155px; right: 0px; } /* IG */
+        .ic-4 { bottom: 45px; right: 45px; } /* Analysis Tool */
+        .ic-5 { bottom: 0px; left: 50%; transform: translateX(-50%); } /* TT */
+        .ic-6 { bottom: 45px; left: 45px; } /* Cyber Lock */
+        .ic-7 { top: 155px; left: 0px; } /* TG */
+        .ic-8 { top: 45px; left: 45px; } /* Snapchat */
+
+        .login-box { max-width: 360px; margin: 0 auto; text-align: center; }
+        .input-line { width: 85%; padding: 12px; margin: 8px 0; border: none; border-bottom: 2px solid #d4af37; background: transparent; font-size: 17px; text-align: center; outline: none; font-weight: bold; color: #555; }
+        .btn-gold { width: 90%; padding: 16px; background: #d4af37; color: #fff; border: none; border-radius: 10px; font-size: 19px; font-weight: bold; margin-top: 10px; cursor: pointer; box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4); }
+        .footer-links { margin-top: 15px; font-size: 14px; font-weight: bold; color: #8a6d3b; }
+        .footer-links a { text-decoration: none; }
+    </style>
+</head>
+<body>
+
+    <div class="brand-header">
+        <h1>MIND BANK</h1>
+        <div class="lang-selector">
+            <select class="lang-mini">
+                <option>العربية (Default)</option>
+                <option>English (US)</option>
+                <option>Français</option>
+                <option>Español</option>
+                <option>Русский</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="orbit-system">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_(2019).png" class="floating-icon ic-1">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png" class="floating-icon ic-2">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg" class="floating-icon ic-3">
+        <img src="https://cdn-icons-png.flaticon.com/512/2108/2108625.png" class="floating-icon ic-4">
+        <img src="https://upload.wikimedia.org/wikipedia/en/a/a9/TikTok_logo.svg" class="floating-icon ic-5">
+        <img src="https://cdn-icons-png.flaticon.com/512/3064/3064155.png" class="floating-icon ic-6">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" class="floating-icon ic-7">
+        <img src="https://www.vectorlogo.zone/logos/snapchat/snapchat-tile.svg" class="floating-icon ic-8">
+
+        <div class="radar-core">
+            <div class="radar-grid"></div>
+            <div class="radar-sweep"></div>
+            <div class="radar-text">SCANNING GLOBAL NODES...</div>
+        </div>
+    </div>
+
+    <div class="login-box">
+        <input type="text" class="input-line" placeholder="Username / اسم المستخدم">
+        <input type="password" class="input-line" placeholder="Password / كلمة المرور">
+        <button class="btn-gold" onclick="location.href='client_data.html'">LOG IN</button>
+        <div class="footer-links">
+            <a href="#" style="color:#8a6d3b;">Forgot Key?</a> | 
+            <a href="client_data.html" style="color:#000;">Join Now</a>
+        </div>
+    </div>
+
+</body>
+</html>

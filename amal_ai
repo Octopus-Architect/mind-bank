@@ -1,0 +1,33 @@
+// عقل أمل الخفيف - نسخة التفاعل اللحظي [cite: 2026-03-02]
+function initAmal() {
+    const bubble = document.getElementById('amal-bubble');
+    const text = document.getElementById('amal-text');
+
+    // وظيفة ظهور أمل "من ورا العنصر"
+    function showAmal(message, element) {
+        const rect = element.getBoundingClientRect();
+        bubble.style.display = 'block';
+        bubble.style.top = (rect.top + window.scrollY - 40) + 'px'; // بتطلع فوق العنصر بشوية
+        bubble.style.left = rect.left + 'px';
+        text.innerText = message;
+        
+        // بتختفي لوحدها بعد 4 ثواني عشان ما تتقلش الصفحة
+        setTimeout(() => { bubble.style.display = 'none'; }, 4000);
+    }
+
+    // 1. التفاعل مع الإعلانات
+    document.querySelectorAll('.ad-item').forEach(ad => {
+        ad.addEventListener('mouseenter', () => {
+            showAmal("ده إعلان مميز، تقدر تدوس عليه وتشوف التفاصيل [cite: 2026-03-02]", ad);
+        });
+    });
+
+    // 2. التفاعل مع الثلاث شرطات (القائمة)
+    const menu = document.querySelector('.menu-icon');
+    if (menu) {
+        menu.addEventListener('mouseenter', () => {
+            showAmal("من هنا تقدري تدخلي للوحة التحكم السرية يا أمل [cite: 2026-02-24]", menu);
+        });
+    }
+}
+window.onload = initAmal;

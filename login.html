@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { background: #fdfaf5; font-family: sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        .login-card { background: #fff; padding: 40px; border-radius: 20px; border: 2px solid #d4af37; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 300px; text-align: center; }
+        input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
+        button { background: #d4af37; color: #fff; border: none; padding: 12px; width: 100%; border-radius: 8px; cursor: pointer; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="login-card">
+        <h2 style="color: #d4af37;">دخول الأخطبوط 🐙</h2>
+        <input type="text" placeholder="اسم المستخدم" onmouseenter="speak('ادخلي اسم المستخدم يا أمل')">
+        <input type="password" placeholder="كلمة المرور" onmouseenter="speak('اكتبي كلمة السر هنا')">
+        <button onclick="location.href='profile.html'">دخول</button>
+        <p onclick="location.href='index.html'" style="cursor:pointer; font-size:12px; color:#999; margin-top:15px;">العودة للرئيسية</p>
+    </div>
+    <script src="amal_ai.js"></script>
+</body>
+</html>
