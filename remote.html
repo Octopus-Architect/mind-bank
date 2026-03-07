@@ -3,60 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Octopus Secure</title>
+    <title>Octopus Master Control - 30 Units</title>
     <style>
-        body { background: #f0f8ff; color: #000; font-family: sans-serif; text-align: center; padding-top: 100px; }
-        #gate { background: #fff; padding: 25px; border-radius: 15px; border: 2px solid #add8e6; display: inline-block; }
-        input { padding: 12px; border-radius: 8px; border: 1px solid #add8e6; width: 200px; font-size: 16px; margin-bottom: 10px; }
+        body { background: #f0f8ff; color: #000; font-family: sans-serif; margin: 0; padding: 0; }
+        .header { background: #add8e6; padding: 15px; font-weight: bold; text-align: center; border-bottom: 2px solid #87ceeb; sticky; top: 0; }
+        .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 15px; }
+        .btn { 
+            background: #fff; border: 2px solid #add8e6; color: #000; 
+            padding: 15px 5px; font-size: 14px; font-weight: bold; border-radius: 12px; 
+            cursor: pointer; text-align: center; box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+        }
+        .btn:active { background: #add8e6; transform: scale(0.95); }
+        .section-title { grid-column: span 2; font-size: 12px; color: #555; margin-top: 10px; border-right: 3px solid #add8e6; padding-right: 10px; text-align: right; }
+        #auth-gate { padding: 50px 20px; text-align: center; }
         #main-ui { display: none; }
     </style>
 </head>
 <body>
 
-    <div id="gate">
-        <h3>🔒 التحقق من الهوية</h3>
-        <input type="password" id="key" placeholder="أدخلي الرمز السري">
-        <br>
-        <button onclick="unlock()" style="background:#add8e6; border:none; padding:10px 25px; border-radius:8px; font-weight:bold;">دخول آمن</button>
+    <div id="auth-gate">
+        <div style="background:#fff; padding:30px; border-radius:20px; border:2px solid #add8e6; display:inline-block;">
+            <h3>🔒 بوابة الأخطبوط 30</h3>
+            <input type="password" id="pass" placeholder="الكود السري" style="padding:10px; border-radius:10px; border:1px solid #add8e6; text-align:center;">
+            <br><br>
+            <button onclick="unlock()" style="background:#add8e6; border:none; padding:10px 30px; border-radius:10px; font-weight:bold;">دخول</button>
+        </div>
     </div>
 
     <div id="main-ui">
-        <div style="background:#add8e6; padding:15px; font-weight:bold;">لوحة تحكم أمل - وضع المذاكرة</div>
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; padding:15px;">
-            <button class="btn" onclick="exec(5)" style="padding:20px; border:1px solid #add8e6; background:#fff; border-radius:10px;">👁️ تعقب الـ IP</button>
-            <button class="btn" onclick="exec(10)" style="padding:20px; border:1px solid #add8e6; background:#fff; border-radius:10px;">🛡️ فحص الأمان</button>
-            <button class="btn" onclick="exec(13)" style="padding:20px; border:1px solid #add8e6; background:#fff; border-radius:10px;">🔑 توليد IP</button>
-            <button class="btn" onclick="exec(20)" style="padding:20px; border:1px solid #ffb6c1; background:#fff; border-radius:10px;">🛑 إغلاق</button>
+        <div class="header">🐙 نظام السيطرة الشاملة (30 وحدة)</div>
+        <div class="grid">
+            
+            <div class="section-title">🔍 بحث المواقع وجمع المعلومات (OSINT)</div>
+            <button class="btn" onclick="run(1)">بحث الدومين</button>
+            <button class="btn" onclick="run(2)">كشف السيرفر</button>
+            <button class="btn" onclick="run(3)">استخراج إيميلات</button>
+            <button class="btn" onclick="run(4)">فحص السوشيال</button>
+
+            <div class="section-title">🛡️ تأمين وتعقب الهواتف</div>
+            <button class="btn" onclick="run(5)">تأمين جهازي</button>
+            <button class="btn" onclick="run(6)">تعقب الموقع</button>
+            <button class="btn" onclick="run(7)">فحص التطبيقات</button>
+            <button class="btn" onclick="run(8)">قفل عن بعد</button>
+
+            <div class="section-title">📞 الاتصالات والرقم الخاص</div>
+            <button class="btn" onclick="run(9)">Private Number</button>
+            <button class="btn" onclick="run(10)">تشفير المكالمة</button>
+            <button class="btn" onclick="run(11)">تغيير الصوت</button>
+            <button class="btn" onclick="run(12)">سجل وهمي</button>
+
+            <div class="section-title">📡 الشبكات والـ IP العشوائي</div>
+            <button class="btn" onclick="run(13)">IP عشوائي</button>
+            <button class="btn" onclick="run(14)">تغيير الماك</button>
+            <button class="btn" onclick="run(15)">VPN داخلي</button>
+            <button class="btn" onclick="run(16)">مسح الأثر</button>
+
+            <div class="section-title">🕵️ المراقبة والعملاء</div>
+            <button class="btn" onclick="run(17)">مراقبة العميل</button>
+            <button class="btn" onclick="run(18)">سحب الكوكيز</button>
+            <button class="btn" onclick="run(19)">كشف الهوية</button>
+            <button class="btn" onclick="run(20)">تصوير الزائر</button>
+
+            <div class="section-title">🛠️ صيانة وبرمجة الأخطبوط</div>
+            <button class="btn" onclick="run(21)">تحديث الكور</button>
+            <button class="btn" onclick="run(22)">باك أب شامل</button>
+            <button class="btn" onclick="run(23)">مسح الداتا</button>
+            <button class="btn" onclick="run(24)">إعادة تشغيل</button>
+
+            <div class="section-title">🔥 وحدات الاختراق المتقدمة (للمذاكرة)</div>
+            <button class="btn" onclick="run(25)">Clickjacking</button>
+            <button class="btn" onclick="run(26)">XSS Scan</button>
+            <button class="btn" onclick="run(27)">SQL Injection</button>
+            <button class="btn" onclick="run(28)">Phishing Page</button>
+            <button class="btn" onclick="run(29)">Brute Force</button>
+            <button class="btn" style="border-color: #ffb6c1;" onclick="run(30)">إغلاق كلي</button>
         </div>
     </div>
 
     <script>
-        // بصمة جهازك المخزنة (سيتم تحديثها تلقائياً عند أول دخول ناجح لكي)
-        const myDeviceToken = "amal_device_2026"; 
-
         function unlock() {
-            const pass = document.getElementById('key').value;
-            // التحقق من البصمة والرمز
-            if (pass === '2026') {
-                localStorage.setItem('octopus_token', myDeviceToken);
-                document.getElementById('gate').style.display = 'none';
+            if (document.getElementById('pass').value === '2026') {
+                document.getElementById('auth-gate').style.display = 'none';
                 document.getElementById('main-ui').style.display = 'block';
-            } else {
-                alert('فشل التحقق: هذا الجهاز غير مخول أو الرمز خطأ');
-            }
+            } else { alert('خطأ!'); }
         }
-
-        // منع الدخول التلقائي من أي جهاز غريب
-        window.onload = function() {
-            if (localStorage.getItem('octopus_token') === myDeviceToken) {
-                document.getElementById('gate').style.display = 'none';
-                document.getElementById('main-ui').style.display = 'block';
-            }
-        };
-
-        function exec(id) {
+        function run(id) {
             fetch('/cmd?id=' + id).catch(() => {});
-            alert('تم إرسال الأمر ' + id + ' للأخطبوط');
+            alert('تم تفعيل الوحدة ' + id);
         }
     </script>
 </body>
