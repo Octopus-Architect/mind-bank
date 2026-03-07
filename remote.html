@@ -3,78 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Octopus Control - 14px Edition</title>
+    <title>Octopus Secure Access</title>
     <style>
-        body { 
-            background: #f0f8ff; /* لبني فاتح مريح */
-            color: #000; 
-            font-family: sans-serif; 
-            padding: 5px; 
-            margin: 0; 
-        }
-        .header { 
-            background: #add8e6; 
-            padding: 12px; 
-            border-bottom: 2px solid #87ceeb; 
-            font-weight: bold;
-            text-align: center;
-        }
-        .grid { 
-            display: grid; 
-            grid-template-columns: repeat(2, 1fr); /* جعلناها عمودين ليتناسب حجم الخط 14 مع العرض */
-            gap: 10px; 
-            padding: 10px; 
-        }
-        .btn { 
-            background: #ffffff; 
-            border: 2px solid #add8e6; 
-            color: #000; 
-            padding: 15px 5px; 
-            font-size: 14px; /* الحجم المطلوب */
-            font-weight: bold;
-            border-radius: 12px; 
-            cursor: pointer;
-            text-align: center;
-            box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
-        }
-        .btn:active { 
-            background: #add8e6; 
-        }
-        #terminal { 
-            background: #fff; 
-            color: #000; 
-            padding: 10px; 
-            margin: 10px; 
-            height: 70px; 
-            font-size: 13px; 
-            border: 2px solid #add8e6; 
-            border-radius: 10px;
-            overflow-y: auto;
-        }
+        body { background: #f0f8ff; color: #000; font-family: sans-serif; text-align: center; padding-top: 50px; }
+        .lock-screen { background: #fff; padding: 30px; border-radius: 20px; display: inline-block; border: 2px solid #add8e6; }
+        input { padding: 10px; border-radius: 10px; border: 1px solid #add8e6; width: 80%; text-align: center; font-size: 18px; }
+        .btn-entry { background: #add8e6; border: none; padding: 10px 20px; border-radius: 10px; margin-top: 10px; font-weight: bold; }
+        #control-panel { display: none; }
     </style>
 </head>
 <body>
-    <div class="header">🐙 لوحة تحكم الأخطبوط (14px)</div>
-    
-    <div id="terminal">النظام جاهز...<br>اختاري الأداة للمذاكرة:</div>
 
-    <div class="grid">
-        <button class="btn" onclick="run(1)">🛠️ صيانة الأساس</button>
-        <button class="btn" onclick="run(2)">🔄 تحديث السحابة</button>
-        <button class="btn" onclick="run(5)">👁️ كشف الـ IP</button>
-        <button class="btn" onclick="run(10)">🛡️ منع الـ Clickjack</button>
-        <button class="btn" onclick="run(13)">🔑 IP عشوائي</button>
-        <button class="btn" onclick="run(15)">🎫 مفتاح جديد</button>
-        <button class="btn" onclick="run(7)">📱 نوع الجهاز</button>
-        <button class="btn" style="border-color: #ffb6c1;" onclick="run(20)">🛑 إغلاق كلي</button>
+    <div id="login-gate" class="lock-screen">
+        <h3>🐙 وصول آمن</h3>
+        <p>أدخلي كود المرور الخاص بالأخطبوط:</p>
+        <input type="password" id="passkey" placeholder="****">
+        <br>
+        <button class="btn-entry" onclick="checkPass()">دخول</button>
+    </div>
+
+    <div id="control-panel">
+        <div style="background: #add8e6; padding: 10px; font-weight: bold;">لوحة تحكم أمل</div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 10px;">
+            <button style="padding: 20px; font-size: 14px; border-radius: 10px; border: 2px solid #add8e6; background: #fff;" onclick="run(1)">🛠️ صيانة</button>
+            <button style="padding: 20px; font-size: 14px; border-radius: 10px; border: 2px solid #add8e6; background: #fff;" onclick="run(5)">👁️ كشف الـ IP</button>
+            <button style="padding: 20px; font-size: 14px; border-radius: 10px; border: 2px solid #add8e6; background: #fff;" onclick="run(10)">🛡️ حماية</button>
+            <button style="padding: 20px; font-size: 14px; border-radius: 10px; border: 2px solid #ffb6c1; background: #fff;" onclick="run(20)">🛑 إغلاق</button>
+        </div>
     </div>
 
     <script>
+        function checkPass() {
+            const key = document.getElementById('passkey').value;
+            // الكود السري بتاعك (تقدري تغيريه)
+            if (key === '2026') { 
+                document.getElementById('login-gate').style.display = 'none';
+                document.getElementById('control-panel').style.display = 'block';
+            } else {
+                alert('عذراً، الكود غير صحيح!');
+            }
+        }
         function run(id) {
-            const term = document.getElementById('terminal');
-            term.innerHTML += '<br> جاري تشغيل الوحدة ' + id + '...';
-            term.scrollTop = term.scrollHeight;
             fetch('/cmd?id=' + id).catch(() => {});
+            alert('جاري تنفيذ الوحدة ' + id);
         }
     </script>
 </body>
