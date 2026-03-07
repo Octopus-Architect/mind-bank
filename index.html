@@ -1,13 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="ar" dir="rtl">
 <head>
-    <meta http-equiv="refresh" content="0; url=remote.html">
-    <script type="text/javascript">
-        window.location.href = "remote.html"
-    </script>
-    <title>Octopus Redirect</title>
+    <meta charset="UTF-8">
+    <title>Octopus Display - العرض الرئيسي</title>
+    <style>
+        body { background: #050505; color: #00ffcc; text-align: center; font-family: 'Courier New', monospace; padding-top: 100px; }
+        .monitor { border: 5px double #333; padding: 40px; display: inline-block; border-radius: 20px; box-shadow: 0 0 20px #00ffcc; }
+        .blink { animation: blinker 1.5s linear infinite; }
+        @keyframes blinker { 50% { opacity: 0; } }
+    </style>
 </head>
 <body>
-    جارٍ تحميل ريموت البروجكتور...
+    <div class="monitor">
+        <h1>🐙 نظام الأخطبوط - شاشة العرض</h1>
+        <p class="blink">جاري استقبال الإشارات من الريموت...</p>
+        <div id="content">انتظر التحديث...</div>
+    </div>
 </body>
 </html>
