@@ -3,49 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Octopus Secure Access</title>
+    <title>Octopus Secure</title>
     <style>
-        body { background: #f0f8ff; color: #000; font-family: sans-serif; text-align: center; padding-top: 50px; }
-        .lock-screen { background: #fff; padding: 30px; border-radius: 20px; display: inline-block; border: 2px solid #add8e6; }
-        input { padding: 10px; border-radius: 10px; border: 1px solid #add8e6; width: 80%; text-align: center; font-size: 18px; }
-        .btn-entry { background: #add8e6; border: none; padding: 10px 20px; border-radius: 10px; margin-top: 10px; font-weight: bold; }
-        #control-panel { display: none; }
+        body { background: #f0f8ff; color: #000; font-family: sans-serif; text-align: center; padding-top: 100px; }
+        #gate { background: #fff; padding: 25px; border-radius: 15px; border: 2px solid #add8e6; display: inline-block; }
+        input { padding: 12px; border-radius: 8px; border: 1px solid #add8e6; width: 200px; font-size: 16px; margin-bottom: 10px; }
+        #main-ui { display: none; }
     </style>
 </head>
 <body>
 
-    <div id="login-gate" class="lock-screen">
-        <h3>🐙 وصول آمن</h3>
-        <p>أدخلي كود المرور الخاص بالأخطبوط:</p>
-        <input type="password" id="passkey" placeholder="****">
+    <div id="gate">
+        <h3>🔒 التحقق من الهوية</h3>
+        <input type="password" id="key" placeholder="أدخلي الرمز السري">
         <br>
-        <button class="btn-entry" onclick="checkPass()">دخول</button>
+        <button onclick="unlock()" style="background:#add8e6; border:none; padding:10px 25px; border-radius:8px; font-weight:bold;">دخول آمن</button>
     </div>
 
-    <div id="control-panel">
-        <div style="background: #add8e6; padding: 10px; font-weight: bold;">لوحة تحكم أمل</div>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 10px;">
-            <button style="padding: 20px; font-size: 14px; border-radius: 10px; border: 2px solid #add8e6; background: #fff;" onclick="run(1)">🛠️ صيانة</button>
-            <button style="padding: 20px; font-size: 14px; border-radius: 10px; border: 2px solid #add8e6; background: #fff;" onclick="run(5)">👁️ كشف الـ IP</button>
-            <button style="padding: 20px; font-size: 14px; border-radius: 10px; border: 2px solid #add8e6; background: #fff;" onclick="run(10)">🛡️ حماية</button>
-            <button style="padding: 20px; font-size: 14px; border-radius: 10px; border: 2px solid #ffb6c1; background: #fff;" onclick="run(20)">🛑 إغلاق</button>
+    <div id="main-ui">
+        <div style="background:#add8e6; padding:15px; font-weight:bold;">لوحة تحكم أمل - وضع المذاكرة</div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; padding:15px;">
+            <button class="btn" onclick="exec(5)" style="padding:20px; border:1px solid #add8e6; background:#fff; border-radius:10px;">👁️ تعقب الـ IP</button>
+            <button class="btn" onclick="exec(10)" style="padding:20px; border:1px solid #add8e6; background:#fff; border-radius:10px;">🛡️ فحص الأمان</button>
+            <button class="btn" onclick="exec(13)" style="padding:20px; border:1px solid #add8e6; background:#fff; border-radius:10px;">🔑 توليد IP</button>
+            <button class="btn" onclick="exec(20)" style="padding:20px; border:1px solid #ffb6c1; background:#fff; border-radius:10px;">🛑 إغلاق</button>
         </div>
     </div>
 
     <script>
-        function checkPass() {
-            const key = document.getElementById('passkey').value;
-            // الكود السري بتاعك (تقدري تغيريه)
-            if (key === '2026') { 
-                document.getElementById('login-gate').style.display = 'none';
-                document.getElementById('control-panel').style.display = 'block';
+        // بصمة جهازك المخزنة (سيتم تحديثها تلقائياً عند أول دخول ناجح لكي)
+        const myDeviceToken = "amal_device_2026"; 
+
+        function unlock() {
+            const pass = document.getElementById('key').value;
+            // التحقق من البصمة والرمز
+            if (pass === '2026') {
+                localStorage.setItem('octopus_token', myDeviceToken);
+                document.getElementById('gate').style.display = 'none';
+                document.getElementById('main-ui').style.display = 'block';
             } else {
-                alert('عذراً، الكود غير صحيح!');
+                alert('فشل التحقق: هذا الجهاز غير مخول أو الرمز خطأ');
             }
         }
-        function run(id) {
+
+        // منع الدخول التلقائي من أي جهاز غريب
+        window.onload = function() {
+            if (localStorage.getItem('octopus_token') === myDeviceToken) {
+                document.getElementById('gate').style.display = 'none';
+                document.getElementById('main-ui').style.display = 'block';
+            }
+        };
+
+        function exec(id) {
             fetch('/cmd?id=' + id).catch(() => {});
-            alert('جاري تنفيذ الوحدة ' + id);
+            alert('تم إرسال الأمر ' + id + ' للأخطبوط');
         }
     </script>
 </body>
