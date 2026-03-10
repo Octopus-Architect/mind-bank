@@ -1,0 +1,5 @@
+nohup: ignoring input
+127.0.0.1 - - [10/Mar/2026 04:04:13] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [10/Mar/2026 04:04:13] "GET /01_landing.html HTTP/1.1" 304 -
+127.0.0.1 - - [10/Mar/2026 04:04:15] "GET /01_landing.html HTTP/1.1" 304 -
+127.0.0.1 - - [10/Mar/2026 04:04:17] "GET /01_landing.html HTTP/1.1" 304 -
